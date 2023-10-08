@@ -1,3 +1,9 @@
+/* Hold the numbers to operate on */
+let first_num = '';
+let last_num = '';
+/* Hold the currently highlighted operator */
+let highlighted_operation = 'none';
+
 /* Select the calc-screen div */
 const calc_screen = document.getElementById('calc-screen');
 
@@ -66,32 +72,58 @@ btn_numpad_9.addEventListener('click', function() {
 /* clear & backspace buttons */
 btn_numpad_clear.addEventListener('click', function() {
     calc_screen.textContent = '';
+    first_num = '';
+    last_num = '';
 });
 btn_numpad_backspace.addEventListener('click', function() {
     let curr_str = calc_screen.textContent;
     let new_str = curr_str.slice(0,-1);
     calc_screen.textContent = new_str;
+    if (last_num === '' && curr_str != '') {}
 });
 
 /* operation buttons */
 btn_numpad_div.addEventListener('click', function() {
-    let curr_str = calc_screen.textContent;
-    calc_screen.textContent = curr_str + '÷';
+    if (first_num === '') {
+        let curr_str = calc_screen.textContent;
+    }
+    else if (first_num != '') {}
 });
 btn_numpad_mul.addEventListener('click', function() {
     let curr_str = calc_screen.textContent;
-    calc_screen.textContent = curr_str + 'x';
+    
 });
 btn_numpad_min.addEventListener('click', function() {
     let curr_str = calc_screen.textContent;
-    calc_screen.textContent = curr_str + '-';
+    
 });
 btn_numpad_add.addEventListener('click', function() {
     let curr_str = calc_screen.textContent;
-    calc_screen.textContent = curr_str + '+';
+    
 });
 
 /* equal button - lots of error checking here */
 btn_numpad_equ.addEventListener('click', function() {
-    
+
 });
+
+/**
+ * correct the highlighted operator button
+ * none     => 'none'
+ * divide   => 'div'
+ * multiply => 'mul'
+ * subtract => 'min'
+ * addition => 'add'
+ */
+function update_highlighted_modifier(new_modifier) {
+    if (highlighted_operation === '') {
+        highlighted_operation = new_modifier;
+    }
+    else if (highlighted_operation != '') {}
+}
+
+/* button.addEventListener('click', function() {
+    button.style.backgroundColor = rgb(225, 142, 0);
+    // Change the color when clicked
+    // Add other JavaScript logic here if needed
+  }); */
