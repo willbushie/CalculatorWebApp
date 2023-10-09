@@ -116,10 +116,23 @@ btn_numpad_equ.addEventListener('click', function() {
  * addition => 'add'
  */
 function update_highlighted_modifier(new_modifier) {
+    /** 
+     * All of the possible cases:
+     * 1) highlighted = ''
+     * 2) highlighted = new
+     * 3) highlighted = something else
+     * 3b) figure out which button is highlighted and un-highlight it
+     * 3b) highligth the new button
+     */
     if (highlighted_operation === '') {
         highlighted_operation = new_modifier;
     }
     else if (highlighted_operation != '') {}
+    else if (highlighted_operation === new_modifier) {}
+    else {
+        highlighted_operation = new_modifier;
+
+    }
 }
 
 /* button.addEventListener('click', function() {
