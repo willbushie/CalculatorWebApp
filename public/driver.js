@@ -71,6 +71,7 @@ btn_numpad_9.addEventListener('click', function() {
 
 /* clear & backspace buttons */
 btn_numpad_clear.addEventListener('click', function() {
+    update_highlighted_modifier('none');
     calc_screen.textContent = '';
     first_num = '';
     last_num = '';
@@ -84,27 +85,31 @@ btn_numpad_backspace.addEventListener('click', function() {
 
 /* operation buttons */
 btn_numpad_div.addEventListener('click', function() {
+    update_highlighted_modifier('div');
     if (first_num === '') {
         let curr_str = calc_screen.textContent;
     }
     else if (first_num != '') {}
 });
 btn_numpad_mul.addEventListener('click', function() {
+    update_highlighted_modifier('mul');
     let curr_str = calc_screen.textContent;
     
 });
 btn_numpad_min.addEventListener('click', function() {
+    update_highlighted_modifier('min');
     let curr_str = calc_screen.textContent;
     
 });
 btn_numpad_add.addEventListener('click', function() {
+    update_highlighted_modifier('add');
     let curr_str = calc_screen.textContent;
     
 });
 
 /* equal button - lots of error checking here */
 btn_numpad_equ.addEventListener('click', function() {
-
+    update_highlighted_modifier('none');
 });
 
 /**
@@ -116,23 +121,51 @@ btn_numpad_equ.addEventListener('click', function() {
  * addition => 'add'
  */
 function update_highlighted_modifier(new_modifier) {
-    /** 
-     * All of the possible cases:
-     * 1) highlighted = ''
-     * 2) highlighted = new
-     * 3) highlighted = something else
-     * 3b) figure out which button is highlighted and un-highlight it
-     * 3b) highligth the new button
-     */
-    if (highlighted_operation === '') {
-        highlighted_operation = new_modifier;
+    /* nothing highlited */
+    if (highlighted_operation === 'none') {
+        if (new_modifier === 'div') {
+            btn_numpad_div.style.backgroundColor = 'rgba(243, 164, 28, 0.765)';
+        }
+        else if (new_modifier === 'mul') {
+            btn_numpad_mul.style.backgroundColor = 'rgba(243, 164, 28, 0.765)';
+        }
+        else if (new_modifier === 'min') {
+            btn_numpad_min.style.backgroundColor = 'rgba(243, 164, 28, 0.765)';
+        }
+        else if (new_modifier === 'add') {
+            btn_numpad_add.style.backgroundColor = 'rgba(243, 164, 28, 0.765)';
+        }
     }
-    else if (highlighted_operation != '') {}
-    else if (highlighted_operation === new_modifier) {}
+    /* something highlighted */
     else {
-        highlighted_operation = new_modifier;
-
+        /* un highlight old button */
+        if (highlighted_operation === 'div') {
+            btn_numpad_div.style.backgroundColor = 'rgb(243, 164, 28)';
+        }
+        else if (highlighted_operation === 'mul') {
+            btn_numpad_mul.style.backgroundColor = 'rgb(243, 164, 28)';
+        }
+        else if (highlighted_operation === 'min') {
+            btn_numpad_min.style.backgroundColor = 'rgb(243, 164, 28)';
+        }
+        else if (highlighted_operation === 'add') {
+            btn_numpad_add.style.backgroundColor = 'rgb(243, 164, 28)';
+        }
+        /* highlight new button */
+        if (new_modifier === 'div') {
+            btn_numpad_div.style.backgroundColor = 'rgba(243, 164, 28, 0.765)';
+        }
+        else if (new_modifier === 'mul') {
+            btn_numpad_mul.style.backgroundColor = 'rgba(243, 164, 28, 0.765)';
+        }
+        else if (new_modifier === 'min') {
+            btn_numpad_min.style.backgroundColor = 'rgba(243, 164, 28, 0.765)';
+        }
+        else if (new_modifier === 'add') {
+            btn_numpad_add.style.backgroundColor = 'rgba(243, 164, 28, 0.765)';
+        }
     }
+    highlighted_operation = new_modifier;
 }
 
 /* button.addEventListener('click', function() {
