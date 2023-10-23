@@ -1,4 +1,4 @@
-# Daily Commit Challenge - Day 2
+# Daily Commit Challenge - Project 2
 
 I am challenging myself to make a commit daily. This will at the very least, get me coding daily and increasing my skills. 
 
@@ -14,7 +14,8 @@ Today's project is a simple webpage containing a calculator. This calculator wil
 - [x] Create a classic calculator layout in the center of the webpage with HTML & CSS.
 - [ ] Using JavaScript, allow the calculator to function as expected.
 
-I used the DuckDuckGo calculator as inspiration. 
+I used the DuckDuckGo calculator as inspiration.
+
 ![Photo of the DuckDuckGo Calculator](resources/inspiration-calc.png)
 
 ## How To Test
@@ -44,7 +45,7 @@ Here are the steps I took to accomplish this project.
 
 1. Write the README (using a template) and create the basic files needed (10 mins).
 2. Create a classic calculator layout in HTML and styling with CSS (1.5 hours).
-3. Add Calculator functionality with JavaScript (3:20PM - 4:10PM).
+3. Add Calculator functionality with JavaScript (3 hrs 10 min).
 
 **Total project time (including coding & research): **
 
@@ -55,6 +56,7 @@ A list of things that I learned during this project.
 - How to add images to a README (.md file).
 - How to place an image in a `<button>`.
 - Styling can take a very long time if you don't have a lot of previous experience. CSS is dense.
+- How classes work in JavaScript & a bit of practice with inheritance.
 - 
 
 ## Contact
