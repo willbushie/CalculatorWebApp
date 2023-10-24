@@ -8,10 +8,8 @@ class Calculator {
     constructor() {
         /* setting class variables */
         let curr_highlighted_operator = null;
-        let left_operand = '';
-        let right_operand = '';
-        let screen_output = '';
-        /* setting up all calculator buttons */
+        
+        /* number & function buttons */
         const btn_numpad_0 = new NumberButton('btn_numpad_0',0);
         const btn_numpad_1 = new NumberButton('btn_numpad_1',1);
         const btn_numpad_2 = new NumberButton('btn_numpad_2',2);
@@ -22,39 +20,71 @@ class Calculator {
         const btn_numpad_7 = new NumberButton('btn_numpad_7',7);
         const btn_numpad_8 = new NumberButton('btn_numpad_8',8);
         const btn_numpad_9 = new NumberButton('btn_numpad_9',9);
-        const btn_numpad_div = new OperatorButton('operation-div','division');
-        const btn_numpad_mul = new OperatorButton('operation-mul','multiplication');
-        const btn_numpad_sub = new OperatorButton('operation-min','subtraction');
-        const btn_numpad_add = new OperatorButton('operation-add','addition');
+        const btn_numpad_div = new FunctionButton('function-div','division');
+        const btn_numpad_mul = new FunctionButton('function-mul','multiplication');
+        const btn_numpad_sub = new FunctionButton('function-min','subtraction');
+        const btn_numpad_add = new FunctionButton('function-add','addition');
+        const btn_numpad_equ = new FunctionButton('function-equ','equals');
+        /* operation buttons */
+        const btn_numpad_back = new OperationButton('operation-backspace');
+        const btn_numpad_clear = new OperationButton('operation-clear');
     }
 
 
 }
 
+/**
+ * ## Screen Class
+ * 
+ * This class shows the screen of the calculator. 
+ */
+class Screen {
+    constructor() {
+        this.pieces = [];
+        this.operations = [];
+    }
 
+    addPiece(piece, operation) {
+        this.pieces.push(piece);
+        this.operations.push(operation);
+    }
+
+    clear() {
+        this.pieces = [];
+        this.operations = [];
+    }
+
+    getAll() {
+        return {'pieces':this.pieces,'operations':this.operations};
+    }
+
+    operate() {}
+}
+
+
+/**
+ * ## Button Class
+ * 
+ * This class is inherited by all calculator buttons.
+ * 
+ * @param {string} element_id 
+ */
 class Button {
-    /**
-     * ## Button Class
-     * 
-     * This class is inherited by all calculator buttons.
-     * 
-     * @param {string} element_id 
-     */
     constructor(element_id) {
         this.btn = document.getElementById(element_id);
     }
 }
 
 
+/**
+ * ## Number Button Class
+ * 
+ * This class is for all number buttons. 
+ * 
+ * @param {string} element_id
+ * @param {int} val
+ */
 class NumberButton extends Button {
-    /**
-     * ## Number Button Class
-     * 
-     * This class is for all number buttons. 
-     * 
-     * @param {string} element_id
-     * @param {int} val
-     */
     constructor(element_id,val) {
         super(element_id);
         this.val = val;
@@ -62,23 +92,23 @@ class NumberButton extends Button {
 }
 
 
-class OperatorButton extends Button {
-    /**
-     * ## Operator Button Class
-     * 
-     * This class is for the operators ('÷', 'x', '-', '+').
-     * 
-     * @param {string} element_id
-     * @param {string} operation
-     */
-    constructor(element_id,operation) {
+/**
+ * ## Function Button Class
+ * 
+ * This class is for the operators ('÷', 'x', '-', '+', '=').
+ * 
+ * @param {string} element_id
+ * @param {string} funct
+ */
+class FunctionButton extends Button {
+    constructor(element_id,funct) {
         super(element_id);
-        this.operation = operation;
+        this.funct = funct;
     }
 
     buttonPress() {
         this.highlightButton();
-        return this.operation;
+        return this.funct;
     }
 
     highlightButton() {
@@ -89,6 +119,23 @@ class OperatorButton extends Button {
         this.btn.style.backgroundColor = 'rgb(243, 164, 28)'
     }
 }
+
+
+/**
+ * ## Operation Button Class
+ * 
+ * This class is for other operations ('C', 'del')
+ * 
+ * @param {string} element_id
+ * @param {string} operation
+ */
+class OperationButton extends Button {
+    constructor(element_id,operation) {
+        super(element_id);
+        this.operation = operation;
+    }
+}
+
 
 /* create new calculator instance */
 const calc = new Calculator();

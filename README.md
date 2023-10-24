@@ -45,7 +45,7 @@ Here are the steps I took to accomplish this project.
 
 1. Write the README (using a template) and create the basic files needed (10 mins).
 2. Create a classic calculator layout in HTML and styling with CSS (1.5 hours).
-3. Add Calculator functionality with JavaScript (3 hrs 10 min).
+3. Add Calculator functionality with JavaScript (3 hrs 50 min).
 
 **Total project time (including coding & research): **
 
